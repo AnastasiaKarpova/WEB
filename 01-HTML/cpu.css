@@ -1,6 +1,6 @@
 ﻿body
 {
-    background-color: #323232;
+    /*background-color: #323232;*/
     color: gray;
     /*font-family:'Segoe UI';*/
     font-family: 'Roboto Condensed';
@@ -13,7 +13,7 @@ p
 {
     text-align: justify;
     font-size: 14pt;
-    font-family: Roboto Condensed;
+    /*font-family: Roboto Condensed;*/
 }
 ol
 {

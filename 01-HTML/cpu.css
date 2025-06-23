@@ -13,6 +13,9 @@ p
 {
     text-align: justify;
     font-size: 14pt;
+    border:solid 1px;
+    margin:22px;
+    padding:11px 22px 33px 44px
     /*font-family: Roboto Condensed;*/
 }
 ol
@@ -43,4 +46,49 @@ a:hover, a:hover:visited
 a:visited
 {
     color:green;
+}
+table
+{
+    border:solid 2px;
+    margin:0 auto;
+    border-spacing:0;
+}
+thead
+{
+    background-color:#6b5fb5;
+    border: solid 10px;
+    border-color:white;
+}
+th
+{
+    color: white;
+    border: solid 1px;
+    padding: 11px 33px;
+    border-top: solid 2px #aeaed3;
+    border-bottom: solid 2px #aeaed3;
+}
+td
+{
+    border:solid 1px;
+    border: solid 1px #aeaed3;
+    text-align:center;
+}
+.row-header
+{
+    text-align: left;
+}
+td[colspan="3"]
+{
+    text-align:center;
+    color:white;
+    background-color: #6b5fb5;
+}
+.table-first-header
+{
+    border-right: solid 2px #aeaed3;
+}
+div
+{
+    border:solid 1px;
+    margin: 22px 44px 55px; /*По часовой стрелке начиная сверху*/
 }

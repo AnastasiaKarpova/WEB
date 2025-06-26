@@ -16,7 +16,8 @@
             </div>
             <div>
                 <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" size="32" placeholder="Пароль - Рыбамеч" />
+                <input type="password" id="password" name="password" size="32 minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[~!@#$%^&*\(\)\[\]\{\}_+=\-\/\\'&quot\;:,.\|?<>]).{8,}$" required placeholder="Пароль - Рыбамеч" /><!--pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Не менее 8 символов, не менее одной заглавной буквы, не менее одной прописной буквы, обязательно хотя бы одна цифры и один спецсимвол"-->  
+                
             </div>
             <div>
                 <label for="email">E-mail:</label>

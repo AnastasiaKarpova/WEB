@@ -1,7 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 body
 {
-    background-color:antiquewhite;
+    background-color:lightblue;
     font-family:Roboto;
 }
 h1
@@ -12,9 +12,10 @@ h1
 }
 .logo
 {
-    width:400px;
-    height:350px;
+    width:300px;
+    height:250px;
     position:fixed;
     z-index:-1;
     left:200px;
+    top:150px;
 }

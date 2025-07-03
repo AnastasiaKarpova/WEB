@@ -15,9 +15,10 @@
     align-self:center;
     width:400px;
     height:360px;
-    background-color:rgb(236,233,216);
+    background:rgb(236,233,216);
     border-top-left-radius:5px;
     border-top-right-radius:5px;
+    /*box-shadow: 0 0 5px 5px #0469EC;*/
 }
 #app_icon
 {
@@ -59,18 +60,61 @@
     font-weight: 700;
     /*font-size:22px;*/
 }
-.control_button:hover
-{
-    background-image: linear-gradient(to bottom right, #75C1FF, #2045D5);
-    box-shadow: inset 0px 0px 3px 3px #77A1F5;
-}
-.control_button:disabled, .control_button:disabled:hover
-{
-    color:lightgray;
-    border-color:lightgray;
-}
+    .control_button:hover
+    {
+        background-image: linear-gradient(to bottom right, #75C1FF, #2045D5);
+        box-shadow: inset 0px 0px 3px 3px #77A1F5;
+    }
+    .control_button:disabled, .control_button:disabled:hover
+    {
+        color:lightgray;
+        border-color:lightgray;
+    }
 #close_button
 {
-    background-image:linear-gradient(to bottom right, #D98485, #FF3020);
-    box-shadow: inset 0px 0px 3px 3px #C49A9B;
+    background-image: linear-gradient(to bottom right, #C97475,#FF3010);
+    box-shadow: inset 3px 1px 3px 1px #C49A9B;
+}
+    #close_button:hover
+    {
+        background-image: linear-gradient(to bottom right, #D98485, #FF3020);
+        box-shadow: inset 0px 0px 3px 3px #C49A9B;
+    }
+.client-rect
+{
+    width: auto;
+    height: 312px;
+    /*border: solid 5px;
+    border-top:none;*/
+    /*border-image: linear-gradient(to right, #0469EC 50%, #000051D7,#000051D7) 1;*/
+    /*border-image: linear-gradient(to right, #0469EC 50%, #000051D7,#000051D7) 1;*/
+    /*linear-gradient(to right, rgba(#650051D7, #801867E5, #650051D7));*/
+    /*border-color: #0469EC;*/
+    display:block;
+}
+#main-area
+{
+    display:flex;
+    justify-content:space-between;
+}
+#bottom-border
+{
+    width: 100%;
+    height: 5px;
+    background-color: darkblue;
+    background-image: linear-gradient(to right, /*#0022BBFF,*/ #0055BBFF,#001177CC)
+}
+#left-border
+{
+    width: 5px;
+    height: 320px;
+    /*background-color: darkblue;*/
+    background-image:linear-gradient(to right, #0022BBFF, #0055FFFF,#0022BBFF)
+}
+#right-border
+{
+    width: 5px;
+    height: 320px;
+    background-color: darkblue;
+    background-image: linear-gradient(to right, #001177CC, #0055BBFF,#001177CC)
 }

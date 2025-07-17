@@ -27,7 +27,7 @@ function SwitchBackground()
         document.body.style.color = "black";
     }*/
     let delay = Number(document.getElementById("delay").value);
-    console.log(delay);
+    /*console.log(delay);*/
     document.body.style.transition = `background-color ${delay}s, ${delay}s`;
     document.getElementById("switchBackground").style.transition = `background-image ${delay}s`;
     document.body.className = document.body.className === "light" ? "dark" : "light";
@@ -36,10 +36,11 @@ document.addEventListener("mousemove", function (event)
 {
     let x = event.clientX;
     let y = event.clientY;
-    document.getElementById("mouse").innerHTML = `X = ${x}, Y = ${y}`
-});
+    document.getElementById("mouse").innerHTML = `X = ${x}, Y = ${y}`;
+}
+);
 
-function setImge()
+function setImage()
 {
     let filename = document.getElementById("image-file");
     //console.log(filename);
@@ -48,7 +49,36 @@ function setImge()
     let reader = new FileReader();
     reader.onload = function (e)
     {
-        docukment.getElementById("photo").src = e.target.result;
+        document.getElementById("photo").src = e.target.result;
     }
     reader.readAsDataURL(filename.files[0]);
+}
+
+document.body.onload = function tick_timer()
+{
+    let time = new Date();
+    document.getElementById("full-time").innerHTML = time;
+    document.getElementById("hours").innerHTML = addLeadingZero(time.getHours());
+    document.getElementById("minutes").innerHTML = addLeadingZero(time.getMinutes());
+    document.getElementById("seconds").innerHTML = addLeadingZero(time.getSeconds());
+
+    document.getElementById("year").innerHTML = time.getFullYear();
+    document.getElementById("month").innerHTML = addLeadingZero(time.getMonth() + 1);
+    document.getElementById("day").innerHTML = addLeadingZero(time.getDate());
+
+    if (document.getElementById("show-date").checked)
+    {
+        document.getElementById("current-date").style.visibility = "visibility";
+    }
+    else
+    {
+        document.getElementById("current-date").style.visibility = "hidden";
+    }
+
+    setTimeout(tick_timer, 1000); //Функция setTimeout(function, delay) вызывает функцию 'function' с задержкой 'delay'
+
+}
+function addLeadingZero(number)
+{
+    return number < 10 ? "0" + number : number;
 }

@@ -88,15 +88,16 @@ function addLeadingZero(number)
     return number < 10 ? "0" + number : number;
 }
 
-document.getElementById("btnStart").onclick = function startCountdownTimer()
+document.getElementById("btn-start").onclick = function startCountdownTimer()
 {
-    let targetDate = document.getElementById("targetDate");
-    let targetTime = document.getElementById("targetTime");
-    let btnStart = document.getElementById("btnStart");
+    let targetDate = document.getElementById("target-date");
+    let targetTime = document.getElementById("target-time");
+    let btnStart = document.getElementById("btn-start");
     targetDate.disabled = targetTime.disabled = !targetDate.disabled;
     if (btnStart.value === "Start")
     {
         btnStart.value = "Stop";
+        tickCountdown();
     }
     else
     {

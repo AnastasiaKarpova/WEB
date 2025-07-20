@@ -7,11 +7,11 @@
     <style>
         body
         {
-            background-color: turquoise;
-            color: #0000FF;
+            background-color: lightblue;
+            color: #000067;
             font-family: 'Segoe UI', Tahoma, Verdana, Geneva, Tahoma, sans-serif, Verdana, sans-serif;
             font-size: 20px;
-            text-align: center;
+            /*text-align: center;*/
         }
     </style>
 </head>
@@ -19,8 +19,47 @@
     <h1>HardBoard</h1>
 <pre>
     <script>
-        let n = Number(prompt("Введите размер шахматной доски:"));
-        
+        let n = Number(prompt("Введите размер клетки шахматной доски:"));
+        document.writeln();
+        for (let i = 0; i < 8; ++i)
+        {
+            if (i % 2 == 0)
+            {
+                for (let j = 0; j < n; ++j)
+                {
+                    for (let z = 0; z < 8; ++z)
+                    {
+                        if (z % 2 == 0)
+                        {
+                            for (let x = 0; x < n; ++x)document.write('*');
+                        }
+                        else
+                        {
+                            for (let x = 0; x < n; ++x) document.write('&nbsp;');
+                        }
+                    }
+                    document.writeln();
+                }
+            }
+            else
+            {
+                for (let j = 0; j < n; ++j)
+                {
+                    for (let z = 0; z < 8; ++z)
+                    {
+                        if (z % 2 == 0)
+                        {
+                            for (let x = 0; x < n; ++x)document.write('&nbsp;');
+                        }
+                        else
+                        {
+                            for (let x = 0; x < n; ++x)document.write('*');
+                        }
+                    }
+                    document.writeln();
+                }
+            }
+        }
     </script>
 </pre>
 </body>

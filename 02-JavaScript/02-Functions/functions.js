@@ -28,7 +28,7 @@ function SwitchBackground()
     }*/
     let delay = Number(document.getElementById("delay").value);
     /*console.log(delay);*/
-    document.body.style.transition = `background-color ${delay}s, ${delay}s`;
+    document.body.style.transition = `background-color ${delay}s, color ${delay}s`;
     document.getElementById("switchBackground").style.transition = `background-image ${delay}s`;
     document.body.className = document.body.className === "light" ? "dark" : "light";
 }
@@ -80,7 +80,7 @@ document.body.onload = function tick_timer()
     document.getElementById("current-date").style.visibility = document.getElementById("show-date").checked ? "visible" : "hidden";
     document.getElementById("weekday").style.visibility = document.getElementById("show-weekday").checked ? "visible" : "hidden";
 
-    setTimeout(tick_timer, 1000); //Функция setTimeout(function, delay) вызывает функцию 'function' с задержкой 'delay'
+    setTimeout(tick_timer, 100); //Функция setTimeout(function, delay) вызывает функцию 'function' с задержкой 'delay'
 
 }
 function addLeadingZero(number)
@@ -108,7 +108,7 @@ function tickCountdown()
 {
     if (!document.getElementById("target-time").disabled) return;
     let now = new Date();
-    console.log(`now timezoneOffset:\tz${now.getTimezoneOffset()}`);
+    console.log(`now timezoneOffset:\t${now.getTimezoneOffset()}`);
     let targetDateControl = document.getElementById("target-date");
     let targetTimeControl = document.getElementById("target-time");
     let targetDate = targetDateControl.valueAsDate;
@@ -127,7 +127,7 @@ function tickCountdown()
     let duration = targetTime - now; //Разность дат вычисляется в формате Timestamp
     document.getElementById("duration").innerHTML = duration;
     //Timestamp - это количество миллисекунд от первого января 1970 года.
-    let timestamp = Matrh.trunc(duraction / 1000);
+    let timestamp = Matrh.trunc(duration / 1000);
     document.getElementById("timestamp").innerHTML = timestamp;
 
     //Отображаем целевую дату/время и промежуток на странице
@@ -135,6 +135,27 @@ function tickCountdown()
     document.getElementById("target-time-value").innerHTML = targetTime;
 
     console.log(`targetTime timezoneOffset:\t${now.getTimezoneOffset()}`);
+
+    const SECONDS_IN_MINUTE = 60;
+    const SECONDS_IN_HOUR = 3600;
+    const SECONDS_IN_DAY = 86400;
+    const SECONDS_IN_WEEK = SECONDS_IN_DAY * 7;
+    const DAYS_IN_MONTH = 365.25 / 12;
+    const SECONDS_IN_MONTH = SECONDS_IN_DAY * DAYS_IN_MONTH;
+    const SECONDS_IN_YEAR = SECONDS_IN_DAY * 365 + SECONDS_IN_HOUR * 6;
+
+    let time_of_day = timestamp % SECONDS_IN_DAY;
+    let hours = Math.floor(time_of_day / 3600);
+    if (hours > 0) time_of_day = (time_of_day % (hours * SECONDS_IN_HOUR));
+
+    let minutes = Math.floor(time_of_day / SECONDS_IN_MINUTE);
+    if (minutes > 0) time_of_day = (time_of_day % (minutes * SECONDS_IN_MINUTE));
+
+    let seconds = time_of_day;
+
+    document.getElementById("hours-unit").innerHTML = addLeadingZero(hours);
+    document.getElementById("minutes-unit").innerHTML = addLeadingZero(minutes);
+    document.getElementById("seconds-unit").innerHTML = addLeadingZero(seconds);
 
     setTimeout(tickCountdown, 100);
 }

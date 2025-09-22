@@ -12,8 +12,8 @@ using Movies.Data;
 namespace Movies.Migrations
 {
     [DbContext(typeof(MoviesContext))]
-    [Migration("20250920134143_mssql.local_migration_689")]
-    partial class mssqllocal_migration_689
+    [Migration("20250920175517_mssql.local_migration_777")]
+    partial class mssqllocal_migration_777
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,7 @@ namespace Movies.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateOnly>("ReleaseDate")
                         .HasColumnType("date");

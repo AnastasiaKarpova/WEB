@@ -5,7 +5,7 @@
 namespace Movies.Migrations
 {
     /// <inheritdoc />
-    public partial class mssqllocal_migration_507 : Migration
+    public partial class mssqllocal_migration_777 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

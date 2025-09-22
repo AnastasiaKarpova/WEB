@@ -3,11 +3,11 @@
     "secrets1": {
       "type": "secrets.user"
     },
-    "mssql1": {
+    "mssql2": {
       "serviceConnectorResourceId": "",
       "secretStore": "LocalSecretsFile",
       "type": "mssql.local",
-      "connectionId": "ConnectionStrings:MoviesContext"
+      "connectionId": "ConnectionStrings:MoviesConnection"
     }
   }
 }

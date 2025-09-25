@@ -17,23 +17,23 @@
             <ValidationSummary class="text-danger" role="alert"/>
             <div class="mb-3">
                 <label for="last_name" class="form-label">last_name:</label> 
-                <InputText id="last_name" @bind-Value="Student.last_name" class="form-control" aria-required="true"/> 
+                <InputText id="last_name" @bind="Student.last_name" class="form-control" aria-required="true"/> 
                 <ValidationMessage For="() => Student.last_name" class="text-danger" /> 
             </div>        
             <div class="mb-3">
                 <label for="first_name" class="form-label">first_name:</label> 
-                <InputText id="first_name" @bind-Value="Student.first_name" class="form-control" aria-required="true"/> 
+                <InputText id="first_name" @bind="Student.first_name" class="form-control" aria-required="true"/> 
                 <ValidationMessage For="() => Student.first_name" class="text-danger" /> 
             </div>        
             <div class="mb-3">
                 <label for="middle_name" class="form-label">middle_name:</label> 
-                <InputText id="middle_name" @bind-Value="Student.middle_name" class="form-control" aria-required="true"/> 
+                <InputText id="middle_name" @bind="Student.middle_name" class="form-control" aria-required="true"/> 
                 <ValidationMessage For="() => Student.middle_name" class="text-danger" /> 
             </div>        
             <div class="mb-3">
-                <label for="birth_day" class="form-label">birth_day:</label> 
-                <InputDate id="birth_day" @bind-Value="Student.birth_day" class="form-control" aria-required="true"/> 
-                <ValidationMessage For="() => Student.birth_day" class="text-danger" /> 
+                <label for="birth_date" class="form-label">birth_date:</label> 
+                <InputDate id="birth_date" @bind-Value="Student.birth_date" class="form-control" aria-required="true"/> 
+                <ValidationMessage For="() => Student.birth_date" class="text-danger" /> 
             </div>        
             <div class="mb-3">
                 <label for="email" class="form-label">email:</label> 
@@ -62,7 +62,7 @@
     private async Task AddStudent()
     {
         using var context = DbFactory.CreateDbContext();
-        context.Student.Add(Student);
+        context.Students.Add(Student);
         await context.SaveChangesAsync();
         NavigationManager.NavigateTo("/students");
     }

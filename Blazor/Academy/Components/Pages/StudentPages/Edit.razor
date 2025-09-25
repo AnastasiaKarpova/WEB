@@ -38,9 +38,9 @@ else
                     <ValidationMessage For="() => Student.middle_name" class="text-danger" />
                 </div>
                 <div class="mb-3">
-                    <label for="birth_day" class="form-label">birth_day:</label>
-                    <InputDate id="birth_day" @bind-Value="Student.birth_day" class="form-control" aria-required="true"/>
-                    <ValidationMessage For="() => Student.birth_day" class="text-danger" />
+                    <label for="birth_date" class="form-label">birth_date:</label>
+                    <InputDate id="birth_date" @bind-Value="Student.birth_date" class="form-control" aria-required="true"/>
+                    <ValidationMessage For="() => Student.birth_date" class="text-danger" />
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">email:</label>
@@ -64,7 +64,7 @@ else
 
 @code {
     [SupplyParameterFromQuery]
-    private int stud_id { get; set; }
+    private short stud_id { get; set; }
 
     [SupplyParameterFromForm]
     private Student? Student { get; set; }
@@ -72,7 +72,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
-        Student ??= await context.Student.FirstOrDefaultAsync(m => m.stud_id == stud_id);
+        Student ??= await context.Students.FirstOrDefaultAsync(m => m.stud_id == stud_id);
 
         if (Student is null)
         {
@@ -109,6 +109,6 @@ else
     private bool StudentExists(int stud_id)
     {
         using var context = DbFactory.CreateDbContext();
-        return context.Student.Any(e => e.stud_id == stud_id);
+        return context.Students.Any(e => e.stud_id == stud_id);
     }
 }

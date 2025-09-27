@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Academy.Models
@@ -11,7 +12,7 @@ namespace Academy.Models
         [Required]
         public DateOnly work_since { get; set; }
         [Required]
-        //[Display(Name = )]
+        [Display(Name = "Ставка")]
         public decimal rate { get; set; }
         //[Required]
         //public string last_name { get; set; }

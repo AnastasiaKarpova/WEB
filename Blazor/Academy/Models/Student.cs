@@ -1,9 +1,18 @@
-﻿using NuGet.Protocol;
+﻿//using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Academy.Models
 {
+    public class Student : Human
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int stud_id { get; set; }
+        [Required]
+        [Display(Name = "Группа")]
+        public int group {  get; set; }
+    }
     //public class Student
     //{
     //    [Key]
@@ -23,12 +32,5 @@ namespace Academy.Models
     //    [Required]
     //    public int group {  get; set; }
     //}
-    public class Student : Human
-    {
-        [Key]
-        public short stud_id { get; set; }
-        [Required]
-        public int group {  get; set; }
-    }
 
 }

@@ -59,7 +59,7 @@ else
                 </div>
                 <div class="mb-3">
                     <label for="rate" class="form-label">rate:</label>
-                    <InputText id="rate" @bind="Teacher.rate" class="form-control" aria-required="true"/>
+                    <InputNumber id="rate" @bind-Value="Teacher.rate" class="form-control" aria-required="true"/>
                     <ValidationMessage For="() => Teacher.rate" class="text-danger" />
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -74,7 +74,7 @@ else
 
 @code {
     [SupplyParameterFromQuery]
-    private short teacher_id { get; set; }
+    private int teacher_id { get; set; }
 
     [SupplyParameterFromForm]
     private Teacher? Teacher { get; set; }

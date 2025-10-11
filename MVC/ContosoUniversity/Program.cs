@@ -1,10 +1,10 @@
 using ContosoUniversity.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+//using Microsoft.AspNetCore.Builder;
+//using Microsoft.AspNetCore.Hosting;
+//using Microsoft.Extensions.Configuration;
+//using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +23,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+/////////////////////////////////////////////////////////////////////
+
+IServiceScope scope = app.Services.CreateScope();
+IServiceProvider services = scope.ServiceProvider;
+
+UniversityContext context = services.GetRequiredService<UniversityContext>();
+DbInitializer.Initialize(context);
+
+///////////////////////////////////////////////////////////////////
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

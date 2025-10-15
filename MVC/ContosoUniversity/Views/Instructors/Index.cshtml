@@ -86,18 +86,26 @@
 
 @if (Model.Enrollments != null)
 { 
-	<h3>Students Enrolled in Selected Course</h3>
-	<table class="table">
-		<tr>
-			<th>Student</th>
-			<th>Grade</th>
-		</tr>
-		@foreach(Enrollment enrollment in Model.Enrollments)
-		{
+	if (Model.Enrollments.Count() > 0)
+	{
+
+		<h3>Students Enrolled in Selected Course</h3>
+		<table class="table">
 			<tr>
-				<td>	@enrollment.Student.FullName	</td>
-				<td>	@Html.DisplayFor(ModelItem => enrollment.Grade)	</td>
+				<th>Student</th>
+				<th>Grade</th>
 			</tr>
-		}
-	</table>
+			@foreach (Enrollment enrollment in Model.Enrollments)
+			{
+				<tr>
+					<td>	@enrollment.Student.FullName	</td>
+					<td>	@Html.DisplayFor(ModelItem => enrollment.Grade)	</td>
+				</tr>
+			}
+		</table>
+	}
+	else
+	{
+		<h3>No humans passed this way</h3>
+	}
 }

@@ -9,9 +9,11 @@ namespace ContosoUniversity.Models
         public int DepartmentID { get; set; }
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
+
         [DataType(DataType.Currency)]
         [Column(TypeName = "money")]
         public decimal Budget { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Дата начала")]
@@ -19,7 +21,7 @@ namespace ContosoUniversity.Models
         public int? InstructorID { get; set; }
 
         //Navigator properties:
-        public Instructor Administtrator { get; set; }
+        public Instructor Administrator { get; set; }
         public ICollection<Course> Courses { get; set; }
     }
 }

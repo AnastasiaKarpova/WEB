@@ -11,13 +11,13 @@ namespace ContosoUniversity.Models
         [DisplayName("Фамилия")]
         [StringLength(24)]
         [RegularExpression(@"^[A-Z]+[a-z]*$")]
-        public string LastName { get; set; }
+        public required string LastName { get; set; }
 
         [Required]
         [DisplayName("Имя")]
         [StringLength(24)]
         [RegularExpression(@"^[A-Z]+[a-z]*$")]
-        public string FirstName { get; set; }
+        public required string FirstName { get; set; }
         
         
         [Required]
@@ -35,6 +35,6 @@ namespace ContosoUniversity.Models
         /// ////////////////////////////////////////////////
        
         //Navigation property
-        public ICollection<Enrollment> Enrollments { get; set; }
+        public ICollection<Enrollment>? Enrollments { get; set; }
     }
 }

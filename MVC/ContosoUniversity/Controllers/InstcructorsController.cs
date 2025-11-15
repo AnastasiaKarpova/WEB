@@ -9,7 +9,6 @@ using ContosoUniversity.Data;
 using ContosoUniversity.Models;
 
 using ContosoUniversity.Models.ViewModels;
-//using System.Reflection;
 
 namespace ContosoUniversity.Controllers
 {
@@ -54,7 +53,7 @@ namespace ContosoUniversity.Controllers
 				//viewModel.Enrollments = viewModel.Courses.Where(x => x.CourseID == courseID).Single().Enrollments;
 				Course selectedCourse = viewModel.Courses.Where(x => x.CourseID == courseID).Single();
 				await _context.Entry(selectedCourse).Collection(x => x.Enrollments).LoadAsync();
-				foreach(Enrollment enrollment in selectedCourse.Enrollments)
+				foreach (Enrollment enrollment in selectedCourse.Enrollments)
 				{
 					await _context.Entry(enrollment).Reference(x => x.Student).LoadAsync();
 				}
@@ -126,13 +125,13 @@ namespace ContosoUniversity.Controllers
 			PopulateAssignedCourseData(instructor);
 			return View(instructor);
 		}
-		void PopulateAssignedCourseData (Instructor instructor)
+		void PopulateAssignedCourseData(Instructor instructor)
 		{
 			DbSet<Course> allCourses = _context.Courses;
-			HashSet<int> instructorCourses = 
+			HashSet<int> instructorCourses =
 				new HashSet<int>(instructor.CourseAssignments.Select(c => c.CourseID));
 			List<AssignedCourseData> viewModel = new List<AssignedCourseData>();
-			foreach(Course course in allCourses)
+			foreach (Course course in allCourses)
 			{
 				viewModel.
 					Add(new AssignedCourseData
@@ -142,7 +141,7 @@ namespace ContosoUniversity.Controllers
 						Assigned = instructorCourses.Contains(course.CourseID)
 					});
 			}
-			ViewData["Course"] = viewModel;
+			ViewData["Courses"] = viewModel;
 		}
 
 		// POST: Instructors/Edit/5
@@ -152,14 +151,15 @@ namespace ContosoUniversity.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> EditPost(int? id, string[] selectedCourses)
 		{
-			if(id == null)return NotFound();
+			if (id == null) return NotFound();
 
 			Instructor instructor = await _context.Instructors
-				.Include (i => i.OfficeAssignment)
+				.Include(i => i.OfficeAssignment)
 				.Include(i => i.CourseAssignments)
-				.ThenInclude(i => i.Course)
-				.FirstOrDefaultAsync (m => m.ID == id);
-			if(await TryUpdateModelAsync<Instructor>(instructor, "", i => i.FirstName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
+					.ThenInclude(i => i.Course)
+				.FirstOrDefaultAsync(m => m.ID == id);
+
+			if (await TryUpdateModelAsync<Instructor>(instructor, "", i => i.FirstName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
 			{
 				if (string.IsNullOrWhiteSpace(instructor.OfficeAssignment?.Location)) instructor.OfficeAssignment = null;
 				UpdateInstructorCourses(selectedCourses, instructor);
@@ -167,7 +167,7 @@ namespace ContosoUniversity.Controllers
 				{
 					await _context.SaveChangesAsync();
 				}
-				catch (DbUpdateException ex) 
+				catch (DbUpdateException ex)
 				{
 					ModelState.AddModelError("Error", "Unable to save changes");
 				}
@@ -215,36 +215,36 @@ namespace ContosoUniversity.Controllers
 			}
 		}
 		/*[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstName,HireDate")] Instructor instructor)
-		{
-			if (id != instructor.ID)
-			{
-				return NotFound();
-			}
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstName,HireDate")] Instructor instructor)
+        {
+            if (id != instructor.ID)
+            {
+                return NotFound();
+            }
 
-			if (ModelState.IsValid)
-			{
-				try
-				{
-					_context.Update(instructor);
-					await _context.SaveChangesAsync();
-				}
-				catch (DbUpdateConcurrencyException)
-				{
-					if (!InstructorExists(instructor.ID))
-					{
-						return NotFound();
-					}
-					else
-					{
-						throw;
-					}
-				}
-				return RedirectToAction(nameof(Index));
-			}
-			return View(instructor);
-		}*/
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(instructor);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!InstructorExists(instructor.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(instructor);
+        }*/
 
 		// GET: Instructors/Delete/5
 		public async Task<IActionResult> Delete(int? id)
@@ -283,6 +283,5 @@ namespace ContosoUniversity.Controllers
 		{
 			return _context.Instructors.Any(e => e.ID == id);
 		}
-
 	}
 }
